@@ -61,14 +61,14 @@ Any collaboration for translation or new language supported is fully appreciated
 
 Thanks and credits:
 -------
-- Fabrice Caruso, for inspiring me with his awesome carbon theme for batocera, always updating and performing. https://github.com/fabricecaruso
-- Seis, for being the first person to recommend the theme for the batocera's official list https://github.com/seeiis
-- Lio, for posting the theme on batocera's official list and making it known to the community : https://github.com/lbrpdx
-- pajarorrojo, for original Playstation-X theme
+- [Fabrice Caruso](https://github.com/fabricecaruso), for inspiring me with his awesome carbon theme for batocera, always updating and performing
+- [Seis](https://github.com/seeiis), for being the first person to recommend the original Playstation-X theme for the batocera's official list
+- [Lio](https://github.com/lbrpdx), for posting the original Playstation-X theme on batocera's official list and making it known to the community
+- [pajarorrojo](https://github.com/pajarorrojo), for original Playstation-X theme
 - Snapouille and Soaresden, for helping with French translation 
 - Janderson for helping with Portuguese translation
 - To the entire batocera team, members and contributors, for making and incredible piece of software and a truly open community
-- Some media files like backgrounds or logos have been selected from the default Carbon theme by @f.caruso
+- Some media files like backgrounds or logos have been selected from the default Carbon theme by [Fabrice Caruso](https://github.com/fabricecaruso)
 
 Notice:
 -------
