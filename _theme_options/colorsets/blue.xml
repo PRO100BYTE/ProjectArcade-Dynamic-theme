@@ -13,11 +13,11 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
       <menuGroupSeparator>3CAEFB</menuGroupSeparator>
       <menuTitleColor>DFDCDC</menuTitleColor>
       <menubgColor>003791</menubgColor>
-      <backgroundgrid>2E6DB4</backgroundgrid>
-      <backgroundgridSelect ifSubset="secondary_colorset:default">F3C30060</backgroundgridSelect>
+      <backgroundgrid>00379180</backgroundgrid>
+      <backgroundgridSelect ifSubset="secondary_colorset:default">F3C300</backgroundgridSelect>
       <menuFooter>555555</menuFooter>
       <gamelistSelectedColor>3CAEFB</gamelistSelectedColor>
-      <gamelistSelectorColor ifSubset="secondary_colorset:default">F3C300</gamelistSelectorColor>
+      <gamelistSelectorColor ifSubset="secondary_colorset:default">0070d1</gamelistSelectorColor>
       <helpFontColor>DFDCDC</helpFontColor>
       <helpIconColor>DFDCDC</helpIconColor>
       <developerColor>00AC97</developerColor>
@@ -34,14 +34,12 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
       <splash.labelColor>ffffff</splash.labelColor>
       <sistema.lineainferior ifSubset="secondary_colorset:default">0070d1</sistema.lineainferior>
       <sistema.pie>030a18de</sistema.pie>
-      <gamelist.starFill ifSubset="secondary_colorset:default">DF0024</gamelist.starFill>
-
    </variables>
 
 
    <view name="system">
       <image name="background" extra="static">
-         <path>./blue/background.jpg</path>
+         <path>./blue/background.png</path>
       </image>
 
 
@@ -53,7 +51,7 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
       </image>
 
       <image name="background-art" extra="static">
-         <path>./blue/background.jpg</path>
+         <path>./blue/background.png</path>
       </image>
    </view>
 
@@ -64,7 +62,7 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
       </image>
 
       <image name="background-art" extra="static">
-         <path>./blue/background.jpg</path>
+         <path>./blue/background.png</path>
       </image>
 
    </view>

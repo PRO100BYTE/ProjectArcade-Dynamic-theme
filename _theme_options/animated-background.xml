@@ -11,14 +11,6 @@
                </storyboard>
           </video>
 
-          <video name="default_background" extra="true" ifSubset="colorset:blue">
-               <path>./../_theme_options/colorsets/blue/background-psx-blue.mp4</path>
-          </video>
-
-          <video name="default_background" extra="true" ifSubset="colorset:black">
-               <path>./../_theme_options/colorsets/black/background-psx-black.mp4</path>
-          </video>
-
 
      </view>
      <view name="grid">

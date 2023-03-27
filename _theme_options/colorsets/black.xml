@@ -1,20 +1,20 @@
-﻿<!-- Theme by pajarorrojo
+<!-- Theme by pajarorrojo
 https://github.com/pajarorrojo/es-theme-PlayStation-X 
 -->
 <theme>
    <formatVersion>7</formatVersion>
    <variables>
-      <menuSelectedColor ifSubset="secondary_colorset:default">bbbbbb</menuSelectedColor>
+      <menuSelectedColor ifSubset="secondary_colorset:default">ffffff</menuSelectedColor>
       <menuSelectorColor ifSubset="secondary_colorset:default">444444a6</menuSelectorColor>
       <menuSelectorColorEnd ifSubset="secondary_colorset:default">666666</menuSelectorColorEnd>
-      <menuFontcolor>777777</menuFontcolor>
+      <menuFontcolor>aaaaaa</menuFontcolor>
       <menuSeparatorColor>555555</menuSeparatorColor>
-      <menuGrouptitle>bbbbbb</menuGrouptitle>
-      <menuGroupSeparator>bbbbbb</menuGroupSeparator>
+      <menuGrouptitle>dddddd</menuGrouptitle>
+      <menuGroupSeparator>dddddd</menuGroupSeparator>
       <menuTitleColor>DFDCDC</menuTitleColor>
-      <menubgColor>232323</menubgColor>
-      <backgroundgrid>aaaaaa</backgroundgrid>
-      <backgroundgridSelect ifSubset="secondary_colorset:default">DF002430</backgroundgridSelect>
+      <menubgColor>010101</menubgColor>
+      <backgroundgrid>aaaaaa80</backgroundgrid>
+      <backgroundgridSelect ifSubset="secondary_colorset:default">F3C300</backgroundgridSelect>
       <menuFooter>555555</menuFooter>
       <gamelistSelectedColor>3CAEFB</gamelistSelectedColor>
       <gamelistSelectorColor ifSubset="secondary_colorset:default">DF0024</gamelistSelectorColor>
@@ -24,7 +24,7 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
       <genreColor>3CAEFB</genreColor>
       <releaseColor>F3C300</releaseColor>
       <starFill>DF0024</starFill>
-      <starUnfill>ffffff69</starUnfill>
+      <starUnfill>F3C30069</starUnfill>
       <manualOnColor>3CAEFB</manualOnColor>
       <savegameOnColor>3CAEFB</savegameOnColor>
       <cheevosOnColor>F3C300</cheevosOnColor>
@@ -34,14 +34,12 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
       <splash.labelColor>ffffff</splash.labelColor>
       <sistema.lineainferior ifSubset="secondary_colorset:default">DF0024</sistema.lineainferior>
       <sistema.pie>000000cf</sistema.pie>
-      <gamelist.starFill ifSubset="secondary_colorset:default">DF0024</gamelist.starFill>
-
    </variables>
 
 
    <view name="system">
       <image name="background" extra="static">
-         <path>./black/background.jpg</path>
+         <path>./black/background.png</path>
       </image>
 
    </view>
@@ -53,7 +51,7 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
       </image>
 
       <image name="background-art" extra="static">
-         <path>./black/background.jpg</path>
+         <path>./black/background.png</path>
       </image>
    </view>
 
@@ -64,7 +62,7 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
       </image>
 
       <image name="background-art" extra="static">
-         <path>./black/background.jpg</path>
+         <path>./black/background.png</path>
       </image>
    </view>
 
