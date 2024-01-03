@@ -107,7 +107,7 @@ restrict others from doing anything the license permits.
 
 MIT License
 
-Copyright (c) 2023 #TheDayG0ne
+Copyright (c) 2023-2024 PRO100BYTE Team and contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
