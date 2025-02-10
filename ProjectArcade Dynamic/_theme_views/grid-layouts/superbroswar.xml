@@ -1,0 +1,21 @@
+<!-- Theme by pajarorrojo
+https://github.com/pajarorrojo/es-theme-PlayStation-X 
+-->
+<theme defaultView="single">
+   <formatVersion>7</formatVersion>
+
+
+   <view name="system">
+
+      <text name="systemInfoEx, systemInfoEx2" extra="true">
+         <opacity>0</opacity>
+         <visible>false</visible>
+      </text>
+
+
+      <text name="system_name_extra" extra="true">
+         <text>${system.fullName}</text>
+         <alignment>left</alignment>
+      </text>
+   </view>
+</theme>

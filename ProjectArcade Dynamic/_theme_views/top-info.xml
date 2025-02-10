@@ -10,7 +10,7 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
    <!--RELOJ-->
    <view name="screen">
       <text name="clock">
-         <fontPath>./_theme_inc/fonts/SST Light.ttf</fontPath>
+         <fontPath>${themePath}/_theme_inc/fonts/SST Light.ttf</fontPath>
          <alignment>right</alignment>
          <size>0.075 0.038</size>
          <fontSize>0.029</fontSize>
@@ -18,7 +18,7 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
          <x>0.920</x>
          <x ifSubset="aspect-ratio:3-2|16-10|5-3|16-9">0.918 </x>
          <x ifSubset="aspect-ratio:4-3|5-4">0.912</x>
-         <y>0.046</y>
+         <y>0.047</y>
          <color>ffffff</color>
          <glowColor>00000035</glowColor>
          <glowSize>1</glowSize>
@@ -36,26 +36,29 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
          <size ifSubset="iconset:snes">0.034</size>
          <pos ifSubset="iconset:arcade">0.968 0.005</pos>
          <size ifSubset="iconset:arcade">0.028</size>
-         <gunPath>./_theme_inc/images/lightgun.png</gunPath>
-         <wheelPath>./_theme_inc/images/wheel.svg</wheelPath>
+         <gunPath>${themePath}/_theme_inc/images/lightgun.png</gunPath>
+         <wheelPath>${themePath}/_theme_inc/images/wheel.svg</wheelPath>
          <itemSpacing ifSubset="iconset:snes">0.013</itemSpacing>
          <itemSpacing ifSubset="iconset:psx|psx-light|psx-color|psx-color-2|position">0.005</itemSpacing>
          <horizontalAlignment>right</horizontalAlignment>
       </controllerActivity>
-
 
       <controllerActivity name="controllerActivity" tinyScreen="true">
          <visible>false</visible>
       </controllerActivity>
 
    </view>
+
+
    <view name="system">
-      <image name="logo-front" extra="static">
-         <path ifSubset="frontend:batocera">./_theme_inc/images/logo-bato-front.svg</path>
-         <path ifSubset="frontend:retrobat">./_theme_inc/images/retrobat-logo.png</path>
-         <path ifSubset="frontend:projectarcade">./_theme_inc/images/projectarcade-logo.png</path>
-         <path ifSubset="frontend:batocera-plus">./_theme_inc/images/batocera_plus_logo.png</path>
-         <path ifSubset="frontend:emuelec">./_theme_inc/images/emuelec-logo.png</path>
+      <image name="frontend-logo" extra="true">
+         <path ifSubset="frontend:batocera">${themePath}/_theme_inc/images/logo-bato-front.svg</path>
+         <path ifSubset="frontend:retrobat">${themePath}/_theme_inc/images/retrobat-logo.png</path>
+         <path ifSubset="frontend:batocera-plus">${themePath}/_theme_inc/images/batocera_plus_logo.png</path>
+         <path ifSubset="frontend:emuelec">${themePath}/_theme_inc/images/emuelec-logo.png</path>
+         <path ifSubset="frontend:projectarcade">${themePath}/_theme_inc/images/projectarcade-logo.png</path>
+			<path ifSubset="frontend:jelos">${themePath}/_theme_inc/images/jelos-logo.png</path>
+			<path ifSubset="frontend:emulationstation">${themePath}/_theme_inc/images/es-logo.png</path>
          <pos>0.009 0.012</pos>
          <maxSize>0.096</maxSize>
          <color>ffffff</color>
@@ -63,13 +66,16 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
          <alignment>left</alignment>
          <linearSmooth>true</linearSmooth>
          <zIndex>99</zIndex>
+         <storyboard>
+            <animation property="offsetX" from="0.004" duration="600" mode="easeOutCubic" />
+          </storyboard>
       </image>
 
 
       <image name="plus-picto" extra="static">
-         <path>./_theme_inc/images/plus-picto-bato.svg</path>
+         <path>${themePath}/_theme_inc/images/plus-picto-bato.svg</path>
          <pos>0.086 0.045</pos>
-         <pos ifSubset="frontend:no-frontend">0.02 0.045</pos>
+         <pos ifSubset="frontend:none">0.02 0.045</pos>
          <maxSize>0.050</maxSize>
          <color>ffffff</color>
          <verticalAlignment>top</verticalAlignment>
@@ -78,111 +84,75 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
          <zIndex>99</zIndex>
       </image>
 
-      <image name="linea-superior" extra="static">
-         <path>./_theme_inc/images/pixel-blanco.png</path>
-         <color>ffffff</color>
+      <image name="frontend-logo, plus-picto" extra="static" tinyScreen="true">
+         <visible>false</visible>
+      </image>
+
+      <image name="frontend-logo, plus-picto" extra="static"
+         ifSubset="aspect-ratio:4-3|5-4">
+         <visible>false</visible>
+      </image>
+
+<!-- INFO DE JUEGOS EN VISTA SISTEMA -->
+
+
+      <!-- CONTADORES DE JUEGOS DEL SISTEMA + EL MAS JUGADO -->
+
+      <text name="systemInfoEx" extra="static">
+         <text>''+ {system:total}  + ' ' +'${GamesNumber}' + '  •  '  +  {system:favorites}.tointeger() + ' ' + '${GamesFavs}' + '  •  '  +  {system:gamesPlayed} + ' ' +  '${NumberPlayed}' + ''</text>
+         <text tinyScreen="true">'' + {system:total}  + ' ' + '${GamesNumber}' + '  •  '  +  {system:favorites}.tointeger() + ' ' +  '${GamesFavs}' + ''</text>
+         <visible>{system:total} &gt; 0 ? 1 : 0</visible>
+      </text>
+
+      <text name="systemInfoEx2" extra="static">
+         <text>''+ '${theme.mostplayed}' + ' ' + {system:mostPlayed} ''+</text>
+         <opacity>0</opacity>
+         <visible>{system:total} &gt; 0 ? 1 : 0</visible>
+      </text>
+
+      <text name="systemInfoExNull" extra="static">
+         <text>0 ${GamesNumber}</text>
+         <visible>{system:total} == 0 ? 1 : 0</visible>
+      </text>
+
+      <control name="systemInfoEx">
+         <storyboard repeat="forever">
+            <animation property="opacity" from="1" to="0" begin="2000" duration="350" mode="easeOut" />
+            <animation property="offsetY" to="-0.02" begin="2000" duration="350" mode="easeOut" />
+            <animation property="opacity" from="0" to="1" begin="5000" duration="350" mode="easeIn" />
+            <animation property="offsetY" to="0" begin="5000" duration="350" mode="easeOut" />
+         </storyboard>
+      </control>
+
+      <control name="systemInfoEx2">
+         <storyboard repeat="forever">
+            <animation property="opacity" from="0" to="1" begin="2000" duration="350" mode="easeIn" />
+            <animation property="offsetY" from="0.02" begin="2000" duration="350" mode="easeOut" />
+            <animation property="opacity" from="1" to="0" begin="5000" duration="350" mode="easeOut" />
+            <animation property="offsetY" to="0.02" begin="5000" duration="350" mode="easeIn" />
+         </storyboard>
+      </control>
+
+      <image name="users-picto" extra="static" onclick="netplay">
+         <path>${themePath}/_theme_inc/images/users-picto.svg</path>
+         <pos>0.554 0.047</pos>
+         <pos ifSubset="aspect-ratio:4-3|5-4">0.534 0.047</pos>
+         <maxSize>0.05</maxSize>
+         <color if="{system.netplay} == true">e8c820cc</color>
+         <color if="{system.netplay} == false">ffffff</color>
          <verticalAlignment>top</verticalAlignment>
          <alignment>left</alignment>
          <linearSmooth>true</linearSmooth>
          <zIndex>99</zIndex>
       </image>
 
-      <image name="linea-superior" ifSubset="aspect-ratio:16-9|4-3|5-3|3-2|5-4" extra="static">
-         <pos>0.07 0.107</pos>
-         <pos ifSubset="frontend:retrobat">0.045 0.107</pos>
-         <pos ifSubset="frontend:projectarcade">0.045 0.107</pos>
-         <pos ifSubset="frontend:batocera-plus">0.045 0.107</pos>
-         <pos ifSubset="frontend:emuelec">0.076 0.107</pos>
-         <pos ifSubset="frontend:no-frontend">0.018 0.107</pos>
-         <size>0.76 0.0011</size>
-         <size ifSubset="frontend:retrobat">0.785 0.0011</size>
-         <size ifSubset="frontend:projectarcade">0.785 0.0011</size>
-         <size ifSubset="frontend:batocera-plus">0.785 0.0011</size>
-         <size ifSubset="frontend:no-frontend">0.81 0.0011</size>
-      </image>
-
-      <image name="linea-superior" ifSubset="aspect-ratio:16-10" extra="static">
-         <pos>0.078 0.107</pos>
-         <pos ifSubset="frontend:retrobat">0.048 0.107</pos>
-         <pos ifSubset="frontend:projectarcade">0.048 0.107</pos>
-         <pos ifSubset="frontend:batocera-plus">0.046 0.107</pos>
-         <pos ifSubset="frontend:emuelec">0.078 0.105</pos>
-         <pos ifSubset="frontend:no-frontend">0.03 0.107</pos>
-         <size>0.755 0.0011</size>
-         <size ifSubset="frontend:retrobat">0.785 0.0011</size>
-         <size ifSubset="frontend:projectarcade">0.785 0.0011</size>
-         <size ifSubset="frontend:batocera-plus">0.785 0.0011</size>
-         <size ifSubset="frontend:no-frontend">0.81 0.0011</size>
-      </image>
-
-      <image name="logo-front, plus-picto" extra="static" tinyScreen="true">
-         <visible>false</visible>
-      </image>
-
-      <image name="logo-front, plus-picto, linea-superior" extra="static"
-         ifSubset="aspect-ratio:4-3|5-4">
-         <visible>false</visible>
-      </image>
-
-      <image name="linea-superior, plus-picto" extra="static" ifSubset="aspect-ratio:3-2">
-         <visible>false</visible>
-      </image>
-
-
-      <text name="systemInfo">
-         <visible>false</visible>
-      </text>
-
-      <text name="systemInfoEx, systemInfoEx2" extra="true">
-         <alignment>left</alignment>
-         <pos>0.162 0.045</pos>
-         <pos ifSubset="aspect-ratio:|5-4">0.065 0.045</pos>
-         <pos ifSubset="aspect-ratio:|4-3">0.065 0.045</pos>
-         <pos tinyScreen="true">0.065 0.045</pos>
-         <size>0.39 0.055</size>
-         <size ifSubset="aspect-ratio:4-3|5-4">0.46 0.055</size>
-         <size tinyScreen="true">0.48 0.055</size>
-         <color>FFFFFF</color>
-         <fontPath>./../_theme_inc/fonts/SST Light.ttf</fontPath>
-         <fontSize>0.030</fontSize>
-         <fontSize ifSubset="aspect-ratio:4-3">0.03</fontSize>
-         <glowColor>00000035</glowColor>
-         <glowSize>1</glowSize>
-         <glowOffset>3 2</glowOffset>
-         <backgroundColor>ff000000</backgroundColor>
-         <zIndex>99</zIndex>
-      </text>
-
-      <text name="systemInfoEx" extra="true">
-         <text>{binding:total} ${GamesNumber} | {binding:favorites} ${GamesFavs} | {binding:gamesPlayed} ${NumberPlayed}</text>
-         <text tinyScreen="true">{binding:total} ${GamesNumber} | {binding:favorites} ${GamesFavs}</text>
-         <storyboard repeat="2">
-            <animation property="opacity" from="0" to="1" duration="500" mode="linear" />
-            <animation property="opacity" from="1" to="0" begin="2500" duration="350" mode="easeOut" />
-            <animation property="opacity" from="0" to="1" begin="7100" duration="350" mode="easeOut" />
-            <animation property="opacity" from="1" to="0" begin="10000" duration="350" mode="easeOut" />
-            <animation property="opacity" from="0" to="1" begin="14100" duration="350" mode="easeOut" />
-         </storyboard>
-      </text>
-
-      <text name="systemInfoEx2" extra="true">
-         <text>${theme.mostplayed} {binding:mostPlayed} </text>
-         <storyboard repeat="2">
-            <animation property="opacity" from="0" to="0" duration="1" mode="linear" />
-            <animation property="opacity" from="0" to="1" begin="2600" duration="350" mode="easeOut" />
-            <animation property="opacity" from="1" to="0" begin="7000" duration="350" mode="easeOut" />
-            <animation property="opacity" from="0" to="1" begin="10100" duration="350" mode="easeOut" />
-            <animation property="opacity" from="1" to="0" begin="14000" duration="350" mode="easeOut" />
-         </storyboard>
-      </text>
-     
-
+      
       <image name="trophy-picto" extra="static" onclick="cheevos">
-         <path>./_theme_inc/images/trophy-picto.svg</path>
+         <path>${themePath}/_theme_inc/images/trophy-picto.svg</path>
          <pos>0.827 0.045</pos>
-         <pos ifSubset="aspect-ratio:4-3">0.83 0.045</pos>
-         <pos ifSubset="aspect-ratio:5-4">0.82 0.045</pos>
-         <pos ifSubset="aspect-ratio:3-2">0.845 0.045</pos>
+         <pos ifSubset="aspect-ratio:4-3">0.885 0.05</pos>
+         <pos ifSubset="aspect-ratio:5-4">0.875 0.045</pos>
+         <pos ifSubset="aspect-ratio:3-2">0.895 0.055</pos>
          <maxSize>0.044</maxSize>
          <maxSize ifSubset="aspect-ratio:4-3|3-2">0.034</maxSize>
          <color>ffffff</color>
@@ -196,14 +166,8 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
          <color>e8c820cc</color>
       </image>
 
-
       <image name="trophy-picto" extra="static" if="{global.cheevos} == false">
          <color>bbbbbb</color>
-      </image>
-      <!-- compatibilidad pre 34 -->
-      <image name="trophy-picto" extra="static" if="{screen.ratio} == '0/0'">
-         <color ifCheevos="true">e8c820cc</color>
-         <color ifCheevos="false">ffffff</color>
       </image>
 
    </view>
@@ -211,20 +175,29 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
 
    <view name="detailed, grid">
 
-      <image name="md_cheevos,md_notcheevos,trophy-picto" onclick="cheevos">
-         <path>./_theme_inc/images/trophy-picto.svg</path>
+      <image name="cheevos-picto, trophy-picto" extra="static" onclick="cheevos">
+         <path>${themePath}/_theme_inc/images/trophy-picto.svg</path>
          <pos>0.827 0.045</pos>
-         <pos ifSubset="aspect-ratio:4-3">0.83 0.045</pos>
-         <pos ifSubset="aspect-ratio:5-4">0.82 0.045</pos>
-         <pos ifSubset="aspect-ratio:3-2">0.845 0.045</pos>
+         <pos ifSubset="aspect-ratio:4-3">0.885 0.05</pos>
+         <pos ifSubset="aspect-ratio:5-4">0.875 0.045</pos>
+         <pos ifSubset="aspect-ratio:3-2">0.895 0.055</pos>
          <maxSize>0.044</maxSize>
-         <maxSize ifSubset="aspect-ratio:4-3|3-2">0.034</maxSize>
          <verticalAlignment>top</verticalAlignment>
          <alignment>left</alignment>
          <linearSmooth>true</linearSmooth>
       </image>
 
-      <image name="trophy-picto" extra="static" >
+      <image name="cheevos-picto" if="{global.cheevos} == true">
+         <color>e8c820cc</color>
+         <zIndex>99</zIndex>
+         <origin>0 0</origin>
+         <visible>{game:cheevos}</visible>
+         <storyboard>
+				<animation property="opacity" from="0" to="1" duration="350" mode="easeInOut" autoreverse="true" repeat="forever" />
+			</storyboard>
+      </image>
+
+      <image name="trophy-picto" extra="static">
          <color>ffffff</color>
          <zIndex>98</zIndex>
       </image>
@@ -233,113 +206,161 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
          <color>bbbbbb</color>
       </image>
 
-      <image name="md_cheevos,md_notcheevos" ifCheevos="true">
-         <color>e8c820cc</color>
-         <zIndex>99</zIndex>
+      <image name="md_netplay" onclick="netplay">
          <origin>0 0</origin>
-         <storyboard >
+         <path>${themePath}/_theme_inc/images/users-picto.svg</path>
+         <pos>0.554 0.047</pos>
+         <pos ifSubset="aspect-ratio:4-3|5-4">0.534 0.047</pos>
+         <maxSize>0.05</maxSize>
+         <color>e8c820cc</color>
+         <verticalAlignment>top</verticalAlignment>
+         <alignment>left</alignment>
+         <linearSmooth>true</linearSmooth>
+         <zIndex>99</zIndex>
+         <storyboard>
 				<animation property="opacity" from="0" to="1" duration="350" mode="easeInOut" autoreverse="true" repeat="forever" />
 			</storyboard>
       </image>
 
-      <image name="md_notcheevos">
+      <image name="users-picto" extra="static" onclick="netplay">
+         <path>${themePath}/_theme_inc/images/users-picto.svg</path>
+         <pos>0.554 0.047</pos>
+         <pos ifSubset="aspect-ratio:4-3|5-4">0.534 0.047</pos>
+         <maxSize>0.05</maxSize>
          <color>ffffff</color>
+         <verticalAlignment>top</verticalAlignment>
+         <alignment>left</alignment>
+         <linearSmooth>true</linearSmooth>
+         <zIndex>98</zIndex>
       </image>
 
-      <image name="consoles" extra="true">
+      <image name="caratula-top" extra="static">
          <pos>0.015 0.02</pos>
          <origin>0 0</origin>
          <alignment>center</alignment>
          <verticalAlignment>bottom</verticalAlignment>
-         <maxSize>0.09 0.09</maxSize>
+         <maxSize>0.096</maxSize>
          <maxSize ifSubset="aspect-ratio:3-2">0.085 0.1</maxSize>
-         <path>./_theme_inc/images/caratulas/default.png</path>
-         <path ifSubset="colorset:black">./_theme_inc/images/caratulas/default.png</path>
-
-         <path>./_theme_inc/images/caratulas/${system.theme}.jpg</path>
-         <path>./_theme_inc/images/caratulas/${system.theme}.png</path>
-         <path ifSubset="colorset:black">./_theme_inc/images/caratulas/${system.theme}.png</path>
-
+         <path>${themePath}/_theme_inc/images/caratulas/default.png</path>
+         <path ifSubset="colorset:black">${themePath}/_theme_inc/images/caratulas/default-b.png</path>
+         <path>${themePath}/_theme_inc/images/caratulas/${system.theme}.jpg</path>
+         <path>${themePath}/_theme_inc/images/caratulas/${system.theme}.png</path>
+         <path ifSubset="colorset:black">${themePath}/_theme_inc/images/caratulas/${system.theme}-b.png</path>
+         <autoFade>false</autoFade>
+         <opacity>0</opacity>
          <zIndex>99</zIndex>
          <linearSmooth>true</linearSmooth>
-      </image>
-
-      <image name="consoles" extra="true" ifSubset="aspect-ratio:4-3|5-4">
-         <visible>false</visible>
-      </image>
-
-      <image name="consoles" extra="true" tinyScreen="true">
-         <visible>false</visible>
-      </image>
-
-      <image name="consoles" extra="true" region="eu" />
-      <image name="consoles" extra="true" region="us">
-         <path>./_theme_inc/images/caratulas/us/${system.theme}.jpg</path>
-         <path>./_theme_inc/images/caratulas/us/${system.theme}.png</path>
-      </image>
-
-      <image name="consoles" extra="true" region="jp">
-         <path>./_theme_inc/images/caratulas/jp/${system.theme}.jpg</path>
-         <path>./_theme_inc/images/caratulas/jp/${system.theme}.png</path>
-      </image>
-
-      <text name="md_lbl_playcount, md_playcount, md_lbl_gametime, md_gametime">
-         <size>0.16 0.034</size>
-         <size ifSubset="aspect-ratio:4-3|5-4">0.195 0.034</size>
-         <zIndex>99</zIndex>
-         <alignment>center</alignment>
-         <backgroundColor>ff000000</backgroundColor>
-         <fontSize>0.023</fontSize>
-         <fontPath>./../_theme_inc/fonts/SST Bold.ttf</fontPath>
-         <singleLineScroll>true</singleLineScroll>
-      </text>
-
-      <text name="md_lbl_playcount,md_lbl_gametime">
-         <forceUppercase>true</forceUppercase>
-         <color>ffffffb1</color>
-      </text>
-
-      <text name="md_playcount,md_gametime">
-         <color>${psx-theme-yellow}</color>
          <storyboard>
-            <animation property="opacity" from="0" to="1" duration="500" mode="linear" />
+            <animation property="offsetX" from="-0.1" duration="600" mode="easeOutCubic" />
+            <animation property="opacity" to="1" duration="350" mode="linear" />
+          </storyboard>
+      </image>
+
+      <image name="caratula-top" extra="static" ifSubset="aspect-ratio:4-3|5-4">
+         <visible>false</visible>
+      </image>
+
+      <image name="caratula-top" extra="static" tinyScreen="true">
+         <visible>false</visible>
+      </image>
+
+      <image name="caratula-top" extra="static" region="eu" />
+      <image name="caratula-top" extra="static" region="us">
+         <path>${themePath}/_theme_inc/images/caratulas/us/${system.theme}.jpg</path>
+         <path>${themePath}/_theme_inc/images/caratulas/us/${system.theme}.png</path>
+      </image>
+
+      <image name="caratula-top" extra="static" region="jp">
+         <path>${themePath}/_theme_inc/images/caratulas/jp/${system.theme}.jpg</path>
+         <path>${themePath}/_theme_inc/images/caratulas/jp/${system.theme}.png</path>
+      </image>
+
+
+
+      <!-- CONTADORES DE PARTIDAS Y TIEMPO DE JUEGO -->
+      <text name="gameInfoEx" extra="static">
+         <text>'' + '${theme-timesPlayedLabel}' + ' ' + {game:playcount} + '  •  ' + '${theme-gameTimeLabel}' + ' ' + {game:gametime}.expandseconds() + '' </text>
+         <visible>{game:gametime} &gt; 0 ? 1 : 0</visible>
+      </text>
+
+      <text name="gameInfoEx2" extra="static">
+         <text>'' + '${theme-lastplayedLabel}' + '... ' + {game:lastplayed}.elapsed().proper() + ''</text>
+         <opacity>0</opacity>
+         <visible>{game:gametime} &gt; 0 ? 1 : 0</visible>
+      </text>
+
+      <text name="gameInfoExNull" extra="static">
+         <text>${theme-timesPlayedLabel} 0</text>
+         <visible>{game:gametime} == 0 ? 1 : 0</visible>
+      </text>
+
+
+      <text name="theme-lastplayed" extra="static">
+         <text>{game:lastplayed}.elapsed().proper()</text>
+         <visible>{game:gametime} &gt; 0 ? 1 : 0</visible>
+         <opacity>0</opacity>
+      </text>
+      
+      <control name="gameInfoEx">
+         <storyboard repeat="forever" event="open">
+            <animation property="opacity" from="1" to="0" begin="2000" duration="350" mode="easeOut" />
+            <animation property="offsetY" to="-0.02" begin="2000" duration="350" mode="easeOut" />
+            <animation property="opacity" from="0" to="1" begin="5000" duration="350" mode="easeIn" />
+            <animation property="offsetY" to="0" begin="5000" duration="350" mode="easeIn" />
          </storyboard>
-      </text>
+         <storyboard repeat="forever" event="activateNext">
+            <animation property="opacity" from="1" to="0" begin="2000" duration="350" mode="easeOut" />
+            <animation property="offsetY" to="-0.02" begin="2000" duration="350" mode="easeOut" />
+            <animation property="opacity" from="0" to="1" begin="5000" duration="350" mode="easeIn" />
+            <animation property="offsetY" to="0" begin="5000" duration="350" mode="easeIn" />
+         </storyboard>
+         <storyboard repeat="forever" event="activatePrev">
+            <animation property="opacity" from="1" to="0" begin="2000" duration="350" mode="easeOut" />
+            <animation property="offsetY" to="-0.02" begin="2000" duration="350" mode="easeOut" />
+            <animation property="opacity" from="0" to="1" begin="5000" duration="350" mode="easeIn" />
+            <animation property="offsetY" to="0" begin="5000" duration="350" mode="easeIn" />
+         </storyboard>
+         <storyboard event="deactivateNext">
+            <animation property="opacity" to="0" duration="100" mode="linear" />
+          </storyboard>
+          <storyboard event="deactivatePrev">
+            <animation property="opacity" to="0" duration="100" mode="linear" />
+          </storyboard>
+      </control>
 
-      <text name="md_lbl_playcount">
-         <pos>0.155 0.04</pos>
-         <pos ifSubset="aspect-ratio:4-3|5-4">0.07 0.04</pos>
-         <pos ifSubset="aspect-ratio:3-2|16-10">0.16 0.04</pos>
-         <pos tinyScreen="true">0.07 0.04</pos>
-      </text>
-
-      <text name="md_playcount">
-         <pos>0.155 0.0703</pos>
-         <pos ifSubset="aspect-ratio:4-3|5-4">0.07 0.0703</pos>
-         <pos ifSubset="aspect-ratio:3-2|16-10">0.16 0.0703</pos>
-         <pos tinyScreen="true">0.07 0.08</pos>
-      </text>
-
-      <text name="md_lbl_gametime">
-         <pos>0.317 0.04</pos>
-         <pos ifSubset="aspect-ratio:4-3|5-4">0.265 0.04</pos>
-         <pos ifSubset="aspect-ratio:3-2|16-10">0.305 0.04</pos>
-         <pos tinyScreen="true">0.265 0.04</pos>
-      </text>
-
-      <text name="md_gametime">
-         <pos>0.317 0.0703</pos>
-         <pos ifSubset="aspect-ratio:4-3|5-4">0.265 0.0703</pos>
-         <pos ifSubset="aspect-ratio:3-2|16-10">0.305 0.0703</pos>
-         <pos tinyScreen="true">0.265 0.08</pos>
-      </text>
+      <control name="gameInfoEx2">
+         <storyboard repeat="forever" event="open">
+            <animation property="opacity" from="0" to="1" begin="2000" duration="350" mode="easeIn" />
+            <animation property="offsetY" from="0.02" begin="2000" duration="350" mode="easeOut" />
+            <animation property="opacity" from="1" to="0" begin="5000" duration="350" mode="easeOut" />
+            <animation property="offsetY" to="0.02" begin="5000" duration="350" mode="easeIn" />
+         </storyboard>
+         <storyboard repeat="forever" event="activateNext">
+            <animation property="opacity" from="0" to="1" begin="2000" duration="350" mode="easeIn" />
+            <animation property="offsetY" from="0.02" begin="2000" duration="350" mode="easeOut" />
+            <animation property="opacity" from="1" to="0" begin="5000" duration="350" mode="easeOut" />
+            <animation property="offsetY" to="0.02" begin="5000" duration="350" mode="easeIn" />
+         </storyboard>
+         <storyboard repeat="forever" event="activatePrev">
+            <animation property="opacity" from="0" to="1" begin="2000" duration="350" mode="easeIn" />
+            <animation property="offsetY" from="0.02" begin="2000" duration="350" mode="easeOut" />
+            <animation property="opacity" from="1" to="0" begin="5000" duration="350" mode="easeOut" />
+            <animation property="offsetY" to="0.02" begin="5000" duration="350" mode="easeIn" />
+         </storyboard>
+         <storyboard event="deactivateNext">
+            <animation property="opacity" to="0" duration="100" mode="linear" />
+          </storyboard>
+          <storyboard event="deactivatePrev">
+            <animation property="opacity" to="0" duration="100" mode="linear" />
+          </storyboard>
+      </control>
 
    </view>
 
    <view name="detailed, grid, system">
 
       <image name="info-picto" extra="static">
-         <path>./_theme_inc/images/info-picto.svg</path>
+         <path>${themePath}/_theme_inc/images/info-picto.svg</path>
          <pos>0.125 0.047</pos>
          <pos ifSubset="aspect-ratio:4-3|5-4">0.02 0.047</pos>
          <maxSize>0.045</maxSize>
@@ -355,8 +376,27 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
          <pos>0.02 0.047</pos>
       </image>
 
-      <image name="puntoazul-1" extra="static">
-         <path>./_theme_inc/images/punto-azul.png</path>
+      <text name="gameInfoEx, gameInfoExNull, gameInfoEx2, gameInfoEx_extra, systemInfoEx, systemInfoExNull, systemInfoEx2, systemInfoEx_extra, system_name_extra, folders-number, galleryInfoEx" extra="static">
+         <alignment>left</alignment>
+         <pos>0.162 0.045</pos>
+         <pos ifSubset="aspect-ratio:4-3|5-4">0.065 0.042</pos>
+         <pos tinyScreen="true">0.065 0.045</pos>
+         <size>0.387 0.05</size>
+         <size ifSubset="aspect-ratio:4-3|5-4|3-2|5-3">0.46 0.055</size>
+         <color>FFFFFF</color>
+         <fontPath>${themePath}/_theme_inc/fonts/SST Light.ttf</fontPath>
+         <fontSize>0.029</fontSize>
+         <glowColor>00000035</glowColor>
+         <glowSize>1</glowSize>
+         <glowOffset>3 2</glowOffset>
+         <backgroundColor>ff000000</backgroundColor>
+         <zIndex>99</zIndex>
+         <singleLineScroll>true</singleLineScroll>
+         <autoScrollDelay>0</autoScrollDelay>
+      </text>
+
+      <image name="puntoazul-1" extra="static" ifSubset="top-info:default">
+         <path>${themePath}/_theme_inc/images/punto-azul.png</path>
          <pos>0.551 0.024</pos>
          <pos ifSubset="aspect-ratio:4-3|5-4">0.532 0.024</pos>
          <maxSize>0.016</maxSize>
@@ -369,13 +409,13 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
          <saturation if="{global.netplay} == true">1</saturation>
       </image>
 
-      <text name="friends" extra="static">
-         <text>v39</text>
+      <text name="version" extra="static" ifSubset="top-info:default">
+         <text>v.41</text>
          <pos>0.563 0.012</pos>
          <pos ifSubset="aspect-ratio:4-3|5-4">0.547 0.012</pos>
          <size>0.064 0.035</size>
          <color>ffffff</color>
-         <fontPath>./../_theme_inc/fonts/SST Light.ttf</fontPath>
+         <fontPath>${themePath}/_theme_inc/fonts/SST Light.ttf</fontPath>
          <fontSize>0.023</fontSize>
          <fontSize ifSubset="aspect-ratio:4-3|5-4" tinyScreen="true">0.02</fontSize>
          <alignment>left</alignment>
@@ -386,59 +426,52 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
          <backgroundColor>ff000000</backgroundColor>
       </text>
 
-      <image name="users-picto" extra="static" onclick="netplay">
-         <path>./_theme_inc/images/users-picto.svg</path>
-         <pos>0.554 0.047</pos>
-         <pos ifSubset="aspect-ratio:4-3|5-4">0.534 0.047</pos>
-         <maxSize>0.05</maxSize>
-         <color if="{system.netplay} == true">e8c820cc</color>
-         <color if="{system.netplay} == false">ffffff</color>
-         <verticalAlignment>top</verticalAlignment>
-         <alignment>left</alignment>
-         <linearSmooth>true</linearSmooth>
-         <zIndex>99</zIndex>
-      </image>
-
-      <image name="users-picto" extra="static" if="{global.netplay} == false">
-         <color>bbbbbb</color>
-      </image>
-
-
       <image name="puntoazul-2" extra="static">
-         <path>./_theme_inc/images/punto-azul.png</path>
-         <pos>0.604 0.061</pos>
-         <pos ifSubset="aspect-ratio:4-3|5-4">0.596 0.061</pos>
+         <path>${themePath}/_theme_inc/images/punto-azul.png</path>
+         <pos>0.604 0.063</pos>
+         <pos ifSubset="aspect-ratio:4-3|5-4">0.605 0.063</pos>
          <maxSize>0.016</maxSize>
          <color>ffffff</color>
          <verticalAlignment>top</verticalAlignment>
          <alignment>left</alignment>
          <linearSmooth>true</linearSmooth>
          <zIndex>99</zIndex>
-         <saturation if="{global.netplay} == false">0</saturation>
-         <saturation if="{global.netplay} == true">1</saturation>
+         <saturation if="{global.cheevos} == false">0</saturation>
+         <saturation if="{global.cheevos} == true">1</saturation>
       </image>
 
       <image name="avatar" extra="static">
-         <path>./_theme_options/avatars/${image.avatar}</path>
-         <path ifSubset="system-avatar:custom">./custom-avatar.png</path>
-         <pos>0.618 0.035</pos>
-         <pos ifSubset="aspect-ratio:4-3|5-4">0.613 0.035</pos>
+         <path>${themePath}/_theme_options/avatars/${image.avatar}</path>
+         <path ifSubset="system-avatar:custom">${themePath}/custom-avatar.png</path>
+         <pos>0.618 0.039</pos>
+         <pos ifSubset="aspect-ratio:4-3|5-4|3-2">0.625 0.039</pos>
          <maxSize>0.063 0.063</maxSize>
          <zIndex>99</zIndex>
          <linearSmooth>true</linearSmooth>
       </image>
 
-      <text name="username" extra="true">
+
+      <webimage name="avatar"  extra="static" if="{global.cheevos} == true" ifSubset="system-avatar:cheevos">
+         <path>https://media.retroachievements.org/UserPic/${global.cheevos.username}.png</path>
+         <pos>0.618 0.035</pos>
+         <pos ifSubset="aspect-ratio:4-3|5-4">0.625 0.035</pos>
+         <maxSize>0.063 0.063</maxSize>
+         <zIndex>99</zIndex>
+         <linearSmooth>true</linearSmooth>
+       </webimage>
+
+       <text name="username" extra="static">
          <text>${theme.nick}</text>
          <text ifSubset="system-username:custom">${custom.nick}</text>
          <pos>0.660 0.05</pos>
-         <pos ifSubset="aspect-ratio:3-2">0.665 0.05</pos>
-         <pos ifSubset="aspect-ratio:4-3|5-4">0.670 0.045</pos>
-         <pos ifSubset="aspect-ratio:4-3" tinyScreen="true">0.665 0.045</pos>
-
+         <pos ifSubset="aspect-ratio:16-10">0.662 0.05</pos>
+         <pos ifSubset="aspect-ratio:4-3|5-4|3-2">0.68 0.05</pos>
+         <pos ifSubset="aspect-ratio:4-3" tinyScreen="true">0.695 0.045</pos>
          <size>0.165 0.04</size>
+         <size ifSubset="aspect-ratio:4-3|5-4">0.185 0.04</size>
+         <size ifSubset="aspect-ratio:3-2">0.205 0.04</size>
          <color>ffffff</color>
-         <fontPath>./../_theme_inc/fonts/SST Light.ttf</fontPath>
+         <fontPath>${themePath}/_theme_inc/fonts/SST Light.ttf</fontPath>
          <fontSize>0.028</fontSize>
          <fontSize ifSubset="aspect-ratio:3-2">0.03</fontSize>
          <alignment>left</alignment>
@@ -450,11 +483,14 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
          <backgroundColor>ff000000</backgroundColor>
       </text>
 
+      <image name="users-picto" extra="static" if="{global.netplay} == false">
+         <color>bbbbbb</color>
+      </image>
 
-      <image name="star-picto" extra="static">
-         <path>./_theme_inc/images/star-picto.png</path>
-         <pos>0.856 0.052</pos>
-         <pos ifSubset="aspect-ratio:16-10|5-3">0.86 0.052</pos>
+      <image name="star-picto" extra="static"  ifSubset="top-info:default">
+         <path>${themePath}/_theme_inc/images/star-picto.png</path>
+         <pos>0.856 0.054</pos>
+         <pos ifSubset="aspect-ratio:16-10|5-3">0.86 0.054</pos>
          <maxSize>0.03</maxSize>
          <color>ffffff</color>
          <verticalAlignment>top</verticalAlignment>
@@ -464,14 +500,15 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
          <visible ifSubset="aspect-ratio:4-3|3-2|5-4">false</visible>
       </image>
 
-      <text name="trophy-level" extra="static">
-         <text>2024</text>
-         <pos>0.875 0.05</pos>
-         <pos ifSubset="aspect-ratio:4-3|5-4">0.865 0.05</pos>
-         <pos ifSubset="aspect-ratio:16-10|5-3">0.88 0.05</pos>
+      <text name="theme-release-year" extra="static" ifSubset="top-info:default">
+         <text>2025</text>
+         <pos>0.875 0.052</pos>
+         <pos ifSubset="aspect-ratio:16-10">0.88 0.052</pos>
+         <pos ifSubset="aspect-ratio:4-3|5-4">0.87 0.052</pos>
+         <pos ifSubset="aspect-ratio:5-3">0.88 0.052</pos>
          <size>0.048 0.035</size>
          <color>ffffff</color>
-         <fontPath>./../_theme_inc/fonts/SST Roman.ttf</fontPath>
+         <fontPath>${themePath}/_theme_inc/fonts/SST Roman.ttf</fontPath>
          <fontSize>0.025</fontSize>
          <fontSize ifSubset="aspect-ratio:4-3" tinyScreen="true">0.02</fontSize>
          <alignment>left</alignment>
@@ -479,8 +516,26 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
          <glowSize>1</glowSize>
          <glowOffset>3 2</glowOffset>
          <zIndex>99</zIndex>
+         <visible ifSubset="aspect-ratio:4-3|3-2|5-4">false</visible>
          <backgroundColor>ff000000</backgroundColor>
       </text>
 
+      <image name="linea-guia-TEST-HOR" extra="static">
+         <path>${themePath}/_theme_inc/images/pixel-blanco.png</path>
+         <pos>0 0.35</pos>
+         <size>1 0.001</size>
+         <color>ff00ff00</color>
+         <zIndex>0</zIndex>
+         <visible>false</visible>
+      </image>
+
+      <image name="linea-guia-TEST-VERT" extra="static">
+         <path>${themePath}/_theme_inc/images/pixel-blanco.png</path>
+         <pos>0.2 0</pos>
+         <size>0.002 1</size>
+         <color>FF000000</color>
+         <zIndex>0</zIndex>
+         <visible>false</visible>
+      </image>
    </view>
 </theme>

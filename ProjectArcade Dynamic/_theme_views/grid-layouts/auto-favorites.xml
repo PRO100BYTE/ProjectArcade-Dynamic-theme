@@ -9,10 +9,10 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
 
 
       <text name="systemInfoEx" extra="true">
-         <text>{binding:total} ${GamesNumber} | {binding:gamesPlayed} ${NumberPlayed}</text>
-
+         <text>{system:total} ${GamesNumber}  •  {system:gamesPlayed} ${NumberPlayed}</text>
       </text>
 
       
    </view>
+
 </theme>

@@ -3,53 +3,85 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
 -->
 <theme>
    <formatVersion>7</formatVersion>
-   <view name="system">
+   <view name="system" >
+
       <image name="logo">
-         <path>./_theme_inc/images/caratulas/default.png</path>
-         <path ifSubset="colorset:black">./_theme_inc/images/caratulas/default.png</path>
-         <path>./_theme_inc/images/caratulas/${system.theme}.jpg</path>
-         <path>./_theme_inc/images/caratulas/${system.theme}.png</path>
-         <path ifSubset="colorset:black">./_theme_inc/images/caratulas/${system.theme}.png</path>
+         <path>${themePath}/_theme_inc/images/caratulas/${system.theme}.jpg</path>
+         <path>${themePath}/_theme_inc/images/caratulas/${system.theme}.png</path>
+         <path ifSubset="colorset:black">${themePath}/_theme_inc/images/caratulas/${system.theme}-b.png</path>
          <tile>false</tile>
          <linearSmooth>true</linearSmooth>
          <zIndex>0</zIndex>
       </image>
-
-
-      <image name="logo" extra="true" region="us">
-         <path>./_theme_inc/images/caratulas/us/${system.theme}.jpg</path>
-         <path>./_theme_inc/images/caratulas/us/${system.theme}.png</path>
+      <image name="logo" region="us" extra="true">
+         <path>${themePath}/_theme_inc/images/caratulas/us/${system.theme}.jpg</path>
+         <path>${themePath}/_theme_inc/images/caratulas/us/${system.theme}.png</path>
       </image>
 
-      <image name="logo" extra="true" region="jp">
-         <path>./_theme_inc/images/caratulas/jp/${system.theme}.jpg</path>
-         <path>./_theme_inc/images/caratulas/jp/${system.theme}.png</path>
+      <image name="logo" region="jp" extra="true">
+         <path>${themePath}/_theme_inc/images/caratulas/jp/${system.theme}.jpg</path>
+         <path>${themePath}/_theme_inc/images/caratulas/jp/${system.theme}.png</path>
       </image>
 
       <carousel name="systemcarousel">
-           <!--<type>horizontal_wheel</type>
-         <logoRotation>0.039</logoRotation>
-         <logoRotationOrigin>0 1500</logoRotationOrigin>-->
          <type>horizontal</type>
          <systemInfoDelay>5</systemInfoDelay>
          <color>00000000</color>
          <logoAlignment>top</logoAlignment>
-         <zIndex>80</zIndex>
+         <zIndex>97</zIndex>
          <defaultTransition ifSubset="anim-system:NO">instant</defaultTransition>
-         <defaultTransition ifSubset="anim-system:YES">fade & slide</defaultTransition>
-         <transitionSpeed>500</transitionSpeed>
-         <minLogoOpacity ifSubset="video-system:background-option">0.4</minLogoOpacity>
-         <minLogoOpacity ifSubset="video-system:NO|small-screen">0.7</minLogoOpacity>
+         <defaultTransition ifSubset="anim-system:YES">fade &amp; slide</defaultTransition>
+         <transitionSpeed>600</transitionSpeed>
+         <minLogoOpacity>0.7</minLogoOpacity>
+         <itemTemplate>
+            <container>
+               <image name="theLogoImage" pos="0.5" origin="0.5" maxSize="1" linearSmooth="false">
+                  <path>{system:logo}</path>
+                  </image>
+               <image name="theLogoImage" pos="0.5" origin="0.5" maxSize="1" linearSmooth="false">
+                  <path ifSubset="colorset:blue">${themePath}/_theme_inc/images/caratulas/default.png</path>
+                  <path ifSubset="colorset:black">${themePath}/_theme_inc/images/caratulas/default-b.png</path>
+                  <visible>!exists({system:logo})</visible>
+               </image>
+               <text name="substitutionText" color="white" alignment="center" multiLine="true">
+                  <visible>!exists({system:logo})</visible>
+                  <text>{system:fullName}</text>
+                  <fontSize ifSubset="carousel:big">0.04</fontSize>
+                  <fontSize ifSubset="carousel:medium">0.035</fontSize>
+                  <fontSize ifSubset="carousel:small">0.03</fontSize>
+                  <fontPath>${themePath}/_theme_inc/fonts/SST Bold.ttf</fontPath>
+                  <forceUppercase>false</forceUppercase>
+                  <lineSpacing>1.2</lineSpacing>
+                  <color>white</color>
+                  <size>0.625 1</size>
+                  <pos>0.19 0</pos>
+                  <padding>0.04 0 0.04 0</padding>
+               </text>
+               <storyboard ifSubset="nav-sound:ps4">
+                  <sound path="${themePath}/_theme_inc/sound-effects/ps4/enter-system.ogg"/>
+                  <animation property="y" from="0.5" duration="500" mode="easeOutCubic" />
+               </storyboard>
+               <storyboard ifSubset="nav-sound:ff">
+                  <sound  path="${themePath}/_theme_inc/sound-effects/ff/enter-system.ogg"/>
+                  <animation property="y" from="0.5" duration="300" mode="easeOutCubic" />
+               </storyboard>
+               <storyboard ifSubset="nav-sound:sd">
+                  <sound  path="${themePath}/_theme_inc/sound-effects/sd/enter-system.ogg"/>
+                  <animation property="y" from="0.5" duration="400" mode="easeOutCubic" />
+               </storyboard>
+               <storyboard ifSubset="nav-sound:ps5">
+                  <sound path="${themePath}/_theme_inc/sound-effects/ps5/enter-system.ogg"/>
+                  <animation property="y" from="0.5" duration="500" mode="easeOutCubic" />
+               </storyboard>
+             </container>
+          </itemTemplate>
       </carousel>
 
-
-
-
       <image name="marco-activo" extra="static">
-         <path>./../_theme_inc/images/marco-activo-iso.png</path>
+         <path>${themePath}/_theme_inc/images/marco-activo-iso.png</path>
          <alignment>left</alignment>
          <verticalAlignment>top</verticalAlignment>
-         <zIndex>89</zIndex>
+         <zIndex>97</zIndex>
       </image>
 
       <text name="start" extra="true">
@@ -57,9 +89,9 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
          <backgroundColor>00000069</backgroundColor>
          <alignment>center</alignment>
          <color>FFFFFF</color>
-         <fontPath>./../_theme_inc/fonts/SST Light.ttf</fontPath>
-         <fontPath ifSubset="aspect-ratio:4-3|5-4" tinyScreen="true">./../_theme_inc/fonts/SST Roman.ttf</fontPath>
-         <zIndex>46</zIndex>
+         <fontPath>${themePath}/_theme_inc/fonts/SST Light.ttf</fontPath>
+         <fontPath ifSubset="aspect-ratio:4-3|5-4" tinyScreen="true">${themePath}/_theme_inc/fonts/SST Roman.ttf</fontPath>
+         <zIndex>97</zIndex>
       </text>
 
       <text name="system_name" extra="true">
@@ -67,9 +99,9 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
          <size ifSubset="aspect-ratio:3-2">0.57 0.001</size>
          <alignment>left</alignment>
          <color>FFFFFF</color>
-         <fontPath>./../_theme_inc/fonts/SST Light.ttf</fontPath>
-         <fontPath ifSubset="aspect-ratio:4-3|9-16|5-4" tinyScreen="true">./../_theme_inc/fonts/SST Roman.ttf</fontPath>
-         <zIndex>45</zIndex>
+         <fontPath>${themePath}/_theme_inc/fonts/SST Light.ttf</fontPath>
+         <fontPath ifSubset="aspect-ratio:4-3|9-16|5-4" tinyScreen="true">${themePath}/_theme_inc/fonts/SST Roman.ttf</fontPath>
+         <zIndex>99</zIndex>
          <glowColor>00000035</glowColor>
          <glowSize>1</glowSize>
          <glowOffset>3 2</glowOffset>
@@ -83,74 +115,169 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
          <backgroundColor>ff000000</backgroundColor>
       </text>
 
-      <text name="fullName" extra="true">
-         <text>${system.theme}</text>
-         <alignment>center</alignment>
-         <color>FFFFFF</color>
-         <fontPath>./../_theme_inc/fonts/SST Bold.ttf</fontPath>
-         <zIndex>45</zIndex>
-         <glowColor>00000035</glowColor>
-         <glowSize>1</glowSize>
-         <glowOffset>3 2</glowOffset>
-         <backgroundColor>${psx-theme-blue4}</backgroundColor>
-         <backgroundColor ifSubset="colorset:black">000000</backgroundColor>
-         <storyboard>
-            <animation property="opacity" from="0" to="0" duration="100" mode="linear" />
-            <animation property="opacity" from="0" to="1" begin="300" duration="0" mode="linear" />
-         </storyboard>
-      </text>
-
-      <!-- FIN CARRUSELES -->
-
-      <image name="background" extra="static">
-         <zIndex>1</zIndex>
-      </image>
-
       <image name="background-art" extra="true" region="eu" />
-      <image name="background-art" extra="true" ifSubset="background-system:fanart|default">
-         <path>./_theme_inc/images/background/${system.theme}.jpg</path>
-         <path region="us">./_theme_inc/images/background/us/${system.theme}.jpg</path>
-         <path region="jp">./_theme_inc/images/background/jp/${system.theme}.jpg</path>
-         <path ifSubset="background-system:fanart">{random:fanart}</path>
-         <zIndex>40</zIndex>
+      <image name="background-art" extra="true" ifSubset="background-system:default|fanart">
+         <path>{random:fanart}</path>
+         <path>${themePath}/_theme_inc/images/background/${system.theme}.jpg</path>
+         <path region="us">${themePath}/_theme_inc/images/background/us/${system.theme}.jpg</path>
+         <path region="jp">${themePath}/_theme_inc/images/background/jp/${system.theme}.jpg</path>
+         <zIndex>45</zIndex>
+      </image>
+      
+      <image name="background-fanart" extra="true" ifSubset="background-system:fanart">
+      <path ifSubset="background-system:fanart">{random:fanart}</path>
+         <zIndex>46</zIndex>
       </image>
 
       <image name="overlay" extra="static">
-         <path>./_theme_inc/images/overlay-systemview.png</path>
-         <zIndex>42</zIndex>
+         <path>${themePath}/_theme_inc/images/overlay-systemview.png</path>
+         <zIndex>48</zIndex>
       </image>
 
-      <image name="background, background-art, overlay" extra="true">
+      <image name="background-art, overlay, background-fanart">
          <origin>0.5 0.5</origin>
          <pos>0.5 0.5</pos>
-         <minSize>1.002 1.002</minSize>
+         <minSize>1 1</minSize>
          <linearSmooth>true</linearSmooth>
          <tile>false</tile>
+         <autoFade>false</autoFade>
+      </image>
+
+      <image name="overlay-arts" extra="true" ifSubset="overlay-arts:YES">
+         <linearSmooth>true</linearSmooth>
+         <tile>false</tile>
+         <autoFade>false</autoFade>
+         <size>0 1</size>
+         <path>${themePath}/${theme.overlayArtsPath}/${system.theme}.png</path>
+         <zIndex>98</zIndex>
+         <opacity>0</opacity>
+         <origin>1 0.5</origin>
+         <pos>1 0.5</pos>
       </image>
 
       <image name="linea-inferior" extra="static">
-         <path>./_theme_inc/images/pixel-blanco.png</path>
+         <path>${themePath}/_theme_inc/images/pixel-blanco.png</path>
          <pos>0 0.934</pos>
-         <size>1 0.0011</size>
+         <size>1 0.002</size>
          <size tinyScreen="true">1 0.005</size>
          <color>${sistema.lineainferior}</color>
-         <verticalAlignment>top</verticalAlignment>
-         <alignment>left</alignment>
-         <linearSmooth>true</linearSmooth>
-         <zIndex>99</zIndex>
+         <colorEnd>${sistema.lineainferior}</colorEnd>
+         <gradientType>horizontal</gradientType>
+         <zIndex>97</zIndex>
+         <autoFade>false</autoFade>
       </image>
 
-      <image name="pie-barra" extra="static">
-         <path>./_theme_inc/images/pixel-blanco.png</path>
+      <image name="linea-inferior" extra="static" ifHelpPrompts="false">
+         <y>0.995</y>
+      </image>
+
+      <image name="pie-barra" extra="static" ifHelpPrompts="true">
+         <path>${themePath}/_theme_inc/images/pixel-blanco.png</path>
          <pos>0 0.934</pos>
          <size>1 0.2</size>
          <color>${sistema.pie}</color>
          <verticalAlignment>top</verticalAlignment>
          <alignment>left</alignment>
          <linearSmooth>true</linearSmooth>
-         <zIndex>98</zIndex>
+         <zIndex>96</zIndex>
+         <opacity>0.4</opacity>
       </image>
-      
+
+      <image name="logo2" extra="true">
+         <pos>0.825 0.77</pos>
+         <alignment>center</alignment>
+         <maxSize>0.16 0.12</maxSize>
+         <origin>0 0</origin>
+         <path>{random:marquee}</path>
+         <!--  png -->
+         <path>${themePath}/_theme_inc/images/logos/${system.theme}.png</path>
+         <!--  svg -->
+         <path>${themePath}/_theme_inc/images/logos/${system.theme}.svg</path>
+         <!--  svg white -->
+         <path>${themePath}/_theme_inc/images/logos/${system.theme}-w.svg</path>
+         <!-- check if lang resources exist -->
+         <path>${themePath}/_theme_inc/images/logos/${system.theme}-${lang}.png</path>
+         <path>${themePath}/_theme_inc/images/logos/${system.theme}-${lang}.svg</path>
+         <zIndex>100</zIndex>
+      </image>
+
+      <image name="logo2" extra="true" region="eu" />
+      <image name="logo2" extra="true" region="us">
+         <path>${themePath}/_theme_inc/images/logos/us/${system.theme}.png</path>
+         <!--  svg -->
+         <path>${themePath}/_theme_inc/images/logos/us/${system.theme}.svg</path>
+         <!--  svg white -->
+         <path>${themePath}/_theme_inc/images/logos/us/${system.theme}-w.svg</path>
+      </image>
+      <image name="logo2" extra="true" region="jp">
+         <path>${themePath}/_theme_inc/images/logos/jp/${system.theme}.png</path>
+         <!--  svg -->
+         <path>${themePath}/_theme_inc/images/logos/jp/${system.theme}.svg</path>
+         <!--  svg white -->
+         <path>${themePath}/_theme_inc/images/logos/jp/${system.theme}-w.svg</path>
+      </image>
+
+      <image name="system-console" extra="true">
+         <tile>false</tile>
+         <pos>0.825 0.48</pos>
+         <origin>0 0</origin>
+         <verticalAlignment>bottom</verticalAlignment>
+         <alignment>center</alignment>
+         <maxSize>0.16 0.25</maxSize>
+         <path>{random:marquee}</path>
+         <path>${themePath}/_theme_inc/images/consoles/${system.theme}.png</path>
+         <zIndex>99</zIndex>
+         <linearSmooth>true</linearSmooth>
+      </image>
+
+      <image name="system-console" extra="true" region="eu" />
+      <image name="system-console" extra="true" region="us">
+         <path>${themePath}/_theme_inc/images/consoles/us/${system.theme}.png</path>
+      </image>
+      <image name="system-console" extra="true" region="jp">
+         <path>${themePath}/_theme_inc/images/consoles/jp/${system.theme}.png</path>
+      </image>
+
+      <image name="gamefolder" extra="static" if="${system.manufacturer} != 'Collections'  &amp;&amp; ${system.hardwareType} != 'system'">
+         <tile>false</tile>
+         <pos>0.012 0.895</pos>
+         <origin>0 0</origin>
+         <verticalAlignment>center</verticalAlignment>
+         <alignment>center</alignment>
+         <maxSize>0.025 0.025</maxSize>
+         <zIndex>99</zIndex>
+         <linearSmooth>true</linearSmooth>
+         <path>${themePath}/_theme_inc/images/gamefolder.png</path>
+         <autoFade>false</autoFade>
+         <opacity ifSubset="system-rom-folder:dim">0.3</opacity>
+         <visible ifSubset="system-rom-folder:NO">false</visible>
+         <visible ifSubset="system-rom-folder:YES|dim">true</visible>
+      </image>
+      <image name="gamefolder" if="${system.manufacturer} != 'Collections' &amp;&amp; ${system.hardwareType} != 'system'" ifHelpPrompts="false">
+         <y>0.955</y>
+      </image>
+
+      <text name="system-folder" extra="true" if="${system.manufacturer} != 'Collections' &amp;&amp; ${system.hardwareType} != 'system'">
+         <text>/${system.theme}</text>
+         <fontSize>0.025</fontSize>
+         <verticalAlignment>center</verticalAlignment>
+         <alignment>center</alignment>
+         <color>FFFFFF</color>
+         <fontPath>${themePath}/_theme_inc/fonts/SST Roman.ttf</fontPath>
+         <zIndex>99</zIndex>
+         <glowColor>00000035</glowColor>
+         <glowSize>1</glowSize>
+         <glowOffset>3 2</glowOffset>
+         <pos>0.037 0.891</pos>
+         <opacity ifSubset="system-rom-folder:dim">0.3</opacity>
+         <visible ifSubset="system-rom-folder:NO">false</visible>
+         <visible ifSubset="system-rom-folder:YES|dim">true</visible>
+      </text>
+
+      <text name="system-folder" extra="true" if="${system.manufacturer} != 'Collections'  &amp;&amp; ${system.hardwareType} != 'system'"  ifHelpPrompts="false">
+         <y>0.951</y>
+      </text>
+
    </view>
 
 </theme>
