@@ -410,7 +410,7 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
       </image>
 
       <text name="version" extra="static" ifSubset="top-info:default">
-         <text>v.41</text>
+         <text>v41-pa</text>
          <pos>0.563 0.012</pos>
          <pos ifSubset="aspect-ratio:4-3|5-4">0.547 0.012</pos>
          <size>0.064 0.035</size>
