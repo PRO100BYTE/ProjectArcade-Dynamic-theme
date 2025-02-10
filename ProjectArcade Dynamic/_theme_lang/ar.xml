@@ -5,7 +5,7 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
   <formatVersion>7</formatVersion>
   
   <variables lang="ar">
-    <theme.welcome>مرحبًا بك في لـ</theme.welcome>
+    <theme.welcome>مرحبًا بك في</theme.welcome>
     <theme.start>ابدأ</theme.start>
     <theme.mostplayed>الأكثر لعبًا:</theme.mostplayed>
     <theme.items>العناصر:</theme.items>
@@ -30,7 +30,7 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
     <none>لا شيء</none>
     <never>أبدًا</never>
     <always>دائمًا</always>
-    <iconset>مجموعة الأيقونات</iconset>
+    <iconset>مجموعة الأزرار والأيقونات</iconset>
     <theme.frontend>اختر واجهة المستخدم المفضلة لديك</theme.frontend>
     <gameBar> إظهار معلومات اللعبة</gameBar>
     <CarouselImageSize>حجم دائرة الدائري للأنظمة</CarouselImageSize>
@@ -79,12 +79,41 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
     <theme.forced>مجبور</theme.forced>
     <theme.gameDescription>إظهار وصف الألعاب</theme.gameDescription>
     <carouselViewName>الدائري الأفقي</carouselViewName>
-    <classiclViewName>دائري كلاسيكي</classiclViewName>
-    <theme.mainImage>الصورة الرئيسية</theme.mainImage>
+    <ps4StylelViewName>نمط PS4</ps4StylelViewName>    
+    <theme.mainImage>الصورة المميزة</theme.mainImage>    
     <theme.gridImage>صورة الشبكة</theme.gridImage>
     <fullGridlViewName>الشبكة الكاملة</fullGridlViewName>
     <theme.gamesplash-type>شاشة تحميل الألعاب</theme.gamesplash-type>
     <image-full-size>صورة بحجم الشاشة الكاملة</image-full-size>
     <theme.nav-sounds>أصوات الملاحة</theme.nav-sounds>
+    <singlelViewName>لعبة تلو الأخرى</singlelViewName>
+    <theme.box>صندوق</theme.box>
+		<theme.logo>شعار</theme.logo>
+    <theme.romFolder>عرض معلومات مجلد الروم</theme.romFolder>
+    <dim>مخفت</dim>
+    <theme-lastplayedLabel>آخر ما لعب</theme-lastplayedLabel>
+		<theme-timesPlayedLabel>مرات اللعب</theme-timesPlayedLabel>
+		<theme-gameTimeLabel>وقت اللعب</theme-gameTimeLabel>
+    <theme.dummydata>عرض الإصدار والسنة في الأعلى</theme.dummydata>
+    <dummydata.showversion>إصدار فقط</dummydata.showversion>
+    <dummydata.showyear>سنة فقط</dummydata.showyear>
+    <theme.hardwareType if="${system.hardwareType} == 'console'">وحدة تحكم</theme.hardwareType>
+    <theme.hardwareType if="${system.hardwareType} == 'computer'">كمبيوتر</theme.hardwareType>
+    <theme.hardwareType if="${system.hardwareType} == 'custom collection'">مجموعة مخصصة</theme.hardwareType>
+    <theme.hardwareType if="${system.hardwareType} == 'portable'">وحدة تحكم محمولة</theme.hardwareType>
+    <theme.hardwareType if="${system.hardwareType} == 'system'">نظام</theme.hardwareType>
+    <theme.hardwareType if="${system.hardwareType} == 'auto collection'">مجموعة تلقائية</theme.hardwareType>
+    <theme.thumbnail-type>نوع صندوق اللعبة (الأولوية)</theme.thumbnail-type>
+    <theme.showlogo>إظهار شعار اللعبة</theme.showlogo>
+    <theme.topinfoarea>أهم منطقة المعلومات</theme.topinfoarea>
+    <theme.clean>نظيف / الحد الأدنى</theme.clean>
+    <theme.region>المنطقة</theme.region>
+    <theme.europe>أوروبا</theme.europe>
+    <theme.usa>الولايات المتحدة</theme.usa>
+    <theme.japan>اليابان</theme.japan>
+    <theme.overlayExtra>عرض الفنون المتراكبة في عرض الأنظمة</theme.overlayExtra>
+    <theme.gamelistOverlayExtra>عرض الفنون المتراكبة في قائمة الألعاب</theme.gamelistOverlayExtra>
+    <theme.nonumbers>بدون أرقام الإصدار والسنة</theme.nonumbers>
+    <theme.highVramRequired>(يتطلب قيم VRAM مرتفعة)</theme.highVramRequired>
   </variables>
 </theme>

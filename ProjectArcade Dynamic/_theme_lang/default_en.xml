@@ -5,7 +5,7 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
 	<formatVersion>7</formatVersion>
 
 	<variables>
-		<theme.welcome>Welcome to</theme.welcome>
+		<theme.welcome>Welcome to </theme.welcome>
 		<theme.start>Start</theme.start>
 		<theme.mostplayed>Most played:</theme.mostplayed>
 		<theme.items>Items:</theme.items>
@@ -30,7 +30,7 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
 		<none>None</none>
 		<never>Never</never>
 		<always>Always</always>
-		<iconset>iconset</iconset>
+		<iconset>Buttons and icon set</iconset>
 		<theme.frontend>Select your favorite frontend</theme.frontend>
 		<gameBar>Show game info</gameBar>
 		<CarouselImageSize>Systems Carousel Size</CarouselImageSize>
@@ -57,7 +57,7 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
 		<theme.videoSnapAudio>Turn on audio in game videos</theme.videoSnapAudio>
 		<theme.animatedList>Animated transitions in game list</theme.animatedList>
 		<theme.animatedSystem>Animated transitions in systems view</theme.animatedSystem>
-		<theme.aspect-ratio >Select your screen type</theme.aspect-ratio>
+		<theme.aspect-ratio>Select your screen type</theme.aspect-ratio>
 		<theme.oversizeVideoOption>Oversize video</theme.oversizeVideoOption>
 		<theme.bato35compatilble>Only compatible in batocera 35 or higher</theme.bato35compatilble>
 		<theme.netplay-required>Please enable netplay to show your username or select another nick in theme options</theme.netplay-required>
@@ -79,12 +79,38 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
 		<theme.forced>forced</theme.forced>
 		<theme.gameDescription>Show game descriptions</theme.gameDescription>
 		<carouselViewName>Horizontal Carousel</carouselViewName>
-		<classiclViewName>Classic Carousel</classiclViewName>
-		<theme.mainImage>Main image</theme.mainImage>
+		<ps4StylelViewName>PS4 Style</ps4StylelViewName>
+		<theme.mainImage>Featured image</theme.mainImage>
 		<theme.gridImage>Grid image</theme.gridImage>
 		<fullGridlViewName>Full Grid</fullGridlViewName>
 		<theme.gamesplash-type>Gamesplash type</theme.gamesplash-type>
 		<image-full-size>Full size image</image-full-size>
 		<theme.nav-sounds>Navigation sounds set</theme.nav-sounds>
+		<singlelViewName>Game by game</singlelViewName>
+		<theme.multidisc>multi-disc</theme.multidisc>
+		<theme.box>Box</theme.box>
+		<theme.logo>Logo</theme.logo>
+		<theme.romFolder>Show ROM Folder Info</theme.romFolder>
+		<dim>Dimmed</dim>
+		<theme-lastplayedLabel>Last Played</theme-lastplayedLabel>
+		<theme-timesPlayedLabel>Times Played:</theme-timesPlayedLabel>
+		<theme-gameTimeLabel>Game Time:</theme-gameTimeLabel>
+		<theme.dummydata>Display version and year in the top area</theme.dummydata>
+		<dummydata.showversion>Only version</dummydata.showversion>
+		<dummydata.showyear>Only year</dummydata.showyear>
+		<theme.hardwareType>{system:hardwareType}.proper()</theme.hardwareType>
+		<theme.hardwareType if="${system.hardwareType} == 'portable'">Portable console</theme.hardwareType>
+		<theme.thumbnail-type>Game box type (priority)</theme.thumbnail-type>
+		<theme.showlogo>Show game logo</theme.showlogo>
+		<theme.topinfoarea>Top Info Area</theme.topinfoarea>
+		<theme.clean>Clean / Minimal</theme.clean>
+		<theme.region>Region</theme.region>
+		<theme.europe>Europe</theme.europe>
+		<theme.usa>USA</theme.usa>
+		<theme.japan>Japan</theme.japan>
+		<theme.overlayExtra>Show overlay arts in systems view</theme.overlayExtra>
+		<theme.gamelistOverlayExtra>Show overlay arts in gamelist</theme.gamelistOverlayExtra>
+		<theme.nonumbers>No version and year numbers</theme.nonumbers>
+		<theme.highVramRequired>(requires high VRAM values)</theme.highVramRequired>
 	</variables>
 </theme>
