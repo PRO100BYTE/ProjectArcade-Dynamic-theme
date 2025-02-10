@@ -5,7 +5,7 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
   <formatVersion>7</formatVersion>
   
   <variables lang="zh">
-    <theme.welcome>欢迎来到 </theme.welcome>
+    <theme.welcome>欢迎来到</theme.welcome>
     <theme.start>开始</theme.start>
     <theme.mostplayed>最受欢迎：</theme.mostplayed>
     <theme.items>物品：</theme.items>

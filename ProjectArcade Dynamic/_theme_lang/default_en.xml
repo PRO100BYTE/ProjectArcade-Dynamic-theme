@@ -5,7 +5,7 @@ https://github.com/pajarorrojo/es-theme-PlayStation-X
 	<formatVersion>7</formatVersion>
 
 	<variables>
-		<theme.welcome>Welcome to </theme.welcome>
+		<theme.welcome>Welcome to</theme.welcome>
 		<theme.start>Start</theme.start>
 		<theme.mostplayed>Most played:</theme.mostplayed>
 		<theme.items>Items:</theme.items>
